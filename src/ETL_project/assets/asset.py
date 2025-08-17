@@ -40,33 +40,31 @@ we will be ingesting three tables stored in a cloud storage i.e. github for our 
 
 """
 
-@dg.asset(kinds = {"duckdb"}, keys= ["target", "main", "raw_customer_data"])
+@dg.asset(kinds = {"duckdb"}, op_tags= {"target": "target", "main": "main", "raw_customer_data": "raw_customer_data"})
 def raw_customer_data() -> None:
-    url = "https://raw.githubusercontent.com/dbt-labs/jaffle-shop-classic/refs/heads/main/seeds/raw_customers.csv"
-    duckdb_path = "data/duckdb/customer_data.duckdb"
-    table_name = "raw_customer_data"
-    dynamic_ingest(url, duckdb_path, table_name)
+       dynamic_ingest(
+        url = "https://raw.githubusercontent.com/dbt-labs/jaffle-shop-classic/refs/heads/main/seeds/raw_customers.csv",
+        duckdb_path = "data/duckdb/customer_data.duckdb",
+        table_name = "duckdb.main.raw_customer_data"
+        )
 
 
-
-@dg.asset(kinds={"duckbd"}, keys =["target", "main", "raw_orders"])
+@dg.asset(kinds={"duckdb"}, op_tags={"target": "target", "main": "main", "raw_orders": "raw_orders"})
 def raw_orders() -> None:
-    url = "https://raw.githubusercontent.com/dbt-labs/jaffle-shop-classic/refs/heads/main/seeds/raw_orders.csv"
-    duckdb_path = "data/duckdb/raw_orders.duckdb"
-    table_name = "raw_orders"
+    dynamic_ingest(
+        url = "https://raw.githubusercontent.com/dbt-labs/jaffle-shop-classic/refs/heads/main/seeds/raw_orders.csv",
+        duckdb_path = "data/duckdb/raw_orders.duckdb",
+        table_name = "duckdb.main.raw_orders"
+    )
 
-    dynamic_ingest(url, duckdb_path, table_name)
 
-
-@dg.asset(kinds={"duckdb"}, keys= ["target", "main", "raw_payments"])
+@dg.asset(kinds={"duckdb"}, op_tags={"target": "target", "main": "main", "raw_payments": "raw_payments"})
 def raw_payments() -> None:
-    url = "https://raw.githubusercontent.com/dbt-labs/jaffle-shop-classic/refs/heads/main/seeds/raw_payments.csv"
-    duckdb_path = "data/duckdb/raw_payments.duckdb"
-    table_name = "raw_payments"
-
-    dynamic_ingest(url, duckdb_path, table_name)
-
-
+    dynamic_ingest(
+        url = "https://raw.githubusercontent.com/dbt-labs/jaffle-shop-classic/refs/heads/main/seeds/raw_payments.csv",
+        duckdb_path = "data/duckdb/raw_payments.duckdb",
+        table_name = "duckdb.main.raw_payments"
+    )
 
 
 
