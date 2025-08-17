@@ -1,9 +1,12 @@
-from pathlib import Path
-import dagster as dg
-from dagster import definitions, load_from_defs_module
-import pandas as pd
 
+# src/ETL_project/definitions.py
+from dagster import Definitions, load_assets_from_modules
+import src.ETL_project.assets.asset as asset_module
 
-@definitions
-def defs():
-    return load_from_defs_module(project_root=Path(__file__).parent.parent.parent)
+# Load all assets defined in the asset module
+all_assets = load_assets_from_modules([asset_module])
+
+# Register them with Dagster
+defs = Definitions(
+    assets=all_assets,
+)

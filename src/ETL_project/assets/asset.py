@@ -26,7 +26,7 @@ def serialize_ingestion(duckdb_path: str, sql: str):
 def dynamic_ingest(url, duckdb_path, table_name):
     query = f"""
     create or replace table {table_name} as (
-        select * from read_csv_auto('{url})
+        select * from read_csv_auto('{url}')
         )
 
     """
