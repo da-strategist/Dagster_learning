@@ -44,8 +44,8 @@ we will be ingesting three tables stored in a cloud storage i.e. github for our 
 def raw_customer_data() -> None:
        dynamic_ingest(
         url = "https://raw.githubusercontent.com/dbt-labs/jaffle-shop-classic/refs/heads/main/seeds/raw_customers.csv",
-        duckdb_path = "data/duckdb/customer_data.duckdb",
-        table_name = "duckdb.main.raw_customer_data"
+        duckdb_path = "src/ETL_project/data/raw_duckdb.duckdb",
+        table_name = "main.raw_customer_data"
         )
 
 
@@ -53,8 +53,8 @@ def raw_customer_data() -> None:
 def raw_orders() -> None:
     dynamic_ingest(
         url = "https://raw.githubusercontent.com/dbt-labs/jaffle-shop-classic/refs/heads/main/seeds/raw_orders.csv",
-        duckdb_path = "data/duckdb/raw_orders.duckdb",
-        table_name = "duckdb.main.raw_orders"
+        duckdb_path = "src/ETL_project/data/raw_duckdb.duckdb",
+        table_name = "main.raw_orders"
     )
 
 
@@ -62,8 +62,8 @@ def raw_orders() -> None:
 def raw_payments() -> None:
     dynamic_ingest(
         url = "https://raw.githubusercontent.com/dbt-labs/jaffle-shop-classic/refs/heads/main/seeds/raw_payments.csv",
-        duckdb_path = "data/duckdb/raw_payments.duckdb",
-        table_name = "duckdb.main.raw_payments"
+        duckdb_path = "src/ETL_project/data/raw_duckdb.duckdb",
+        table_name = "main.raw_payments"
     )
 
 
