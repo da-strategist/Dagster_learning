@@ -61,7 +61,7 @@ we will be ingesting three tables stored in a cloud storage i.e. github for our 
 def raw_customer_data(duckdb: DuckDBResource) -> None:
        url_import(
         url = "https://raw.githubusercontent.com/dbt-labs/jaffle-shop-classic/refs/heads/main/seeds/raw_customers.csv",
-        duckdb_path = "src/ETL_project/data/raw_duckdb.duckdb",
+        duckdb = duckdb,
         table_name = "main.raw_customer_data"
         )
 
@@ -70,7 +70,7 @@ def raw_customer_data(duckdb: DuckDBResource) -> None:
 def raw_orders(duckdb: DuckDBResource) -> None:
     url_import(
         url = "https://raw.githubusercontent.com/dbt-labs/jaffle-shop-classic/refs/heads/main/seeds/raw_orders.csv",
-        duckdb_path = "src/ETL_project/data/raw_duckdb.duckdb",
+        duckdb = duckdb,
         table_name = "main.raw_orders"
     )
 
@@ -79,7 +79,7 @@ def raw_orders(duckdb: DuckDBResource) -> None:
 def raw_payments(duckdb: DuckDBResource) -> None:
     url_import(
         url = "https://raw.githubusercontent.com/dbt-labs/jaffle-shop-classic/refs/heads/main/seeds/raw_payments.csv",
-        duckdb_path = "src/ETL_project/data/raw_duckdb.duckdb",
+        duckdb = duckdb,
         table_name = "main.raw_payments"
     )
 
